@@ -6,8 +6,8 @@ const countryList = rawCountryList.filter(
 );
 countryList.sort();
 
-console.log(rawCountryList);
-console.log(countryList);
+// console.log(rawCountryList);
+// console.log(countryList);
 
 Vue.component("v-select", VueSelect.VueSelect);
 
@@ -15,5 +15,18 @@ var app = new Vue({
   el: "#vue-app",
   data: {
     countries: countryList,
+    countrySelected: "",
+    universities: [],
+    universitySelected: null
+  },
+  methods: {
+    fetchUniversities: function () {
+      let matches = universityJson.filter(
+        (item) => item.country == this.countrySelected
+      );
+      matches.sort((lhs, rhs) => (lhs.name < rhs.name ? -1 : 1));
+
+      this.universities = matches;
+    },
   },
 });

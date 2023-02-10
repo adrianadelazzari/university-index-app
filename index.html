@@ -27,13 +27,15 @@
                     {{ item }}
                 </option>
               </select> -->
-              <v-select :options="countries"></v-select>
+              <v-select v-model="countrySelected" :options="countries" @input="fetchUniversities();universitySelected=null"></v-select>
             </td>
           </tr>
 
           <tr>
             <td class="right-aligned">Select a university:</td>
-            <td></td>
+            <td>
+                <v-select v-model="universitySelected" :options="universities" :label="'name'"></v-select>
+            </td>
           </tr>
         </table>
       </form>
