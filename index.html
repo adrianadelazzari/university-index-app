@@ -38,7 +38,7 @@
             </td>
           </tr>
           <tr>
-            <td class="right-aligned">Domains: </td>
+            <td class="right-aligned" :class="{ 'multiple-entries' : (universitySelected != null && universitySelected.domains.length > 1) }">Domains: </td>
             <td v-if="universitySelected != null">
                 <span v-for="domain in universitySelected.domains">
                     {{ domain }} <br/>
@@ -46,7 +46,7 @@
             </td>
           </tr>
           <tr>
-            <td class="right-aligned">Web Pages: </td>
+            <td class="right-aligned" :class="{ 'multiple-entries' : (universitySelected != null && universitySelected.web_pages.length > 1) }">Web Pages: </td>
             <td v-if="universitySelected != null">
                 <span v-for="webpage in universitySelected.web_pages">
                     <a v-bind:href="webpage" target="_blank">{{ webpage }} <br/></a>
